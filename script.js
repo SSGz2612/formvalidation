@@ -106,16 +106,5 @@ function validatePhone(e) {
 // })
 // .then((data) => {
 //     console.log(data);
-//     console.log(data.map((v) => v.fifa ));
-//     console.log(data.map((v) => v.flags.png)); // url of flags
-
-//     // grup country list
-//     const countryL = data.map((v) => {
-//         return`<option><img src="${v.flags.png}></img>${v.fifa}</option>`;
-//     })
-    
-//     const countryL2 = `<select>${countryL}</select>`;
-
-//     document.querySelector("#flag2").insertAdjacentHTML('afterbegin', countryL2);
 // })
 // .catch((error) => console.log(error))
