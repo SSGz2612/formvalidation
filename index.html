@@ -6,71 +6,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Bookstrap</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="./bts/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
+    <!-- intlTelInput Tools -->
+    <link rel="stylesheet" href="./build/css/intlTelInput.css">
 </head>
 <body>
     <div class="container bg card p-3 content">
         <div class="row">
             <div class="col-12 col-md-6">
-                <img src="./tools/img.png" alt="image" class="img-fluid rounded">
+                <img src="./img/img.png" alt="image" class="img-fluid rounded">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat itaque eius repellat nostrum explicabo laudantium similique alias ducimus, quis voluptatum. Porro, delectus. Ullam neque laborum sequi adipisci unde quidem dolore?</p>
             </div>
 
             <div class="col-12 col-md-6">
                 <h1 class="col-12 text-center">Registration</h1>
 
-                <form action="" class="row g-3 needs-validation" novalidate id="form">
+                <form id="form" class="row g-3 needs-validation" novalidate>
                     <div class="col-12">
                         <div>
                             <label for="firstName" class="form-label">First Name</label>
-                            <input class="form-control" name="firstName" type="text" id="firstName" value="" required>
+                            <input
+                                class="form-control"
+                                name="firstName"
+                                type="text"
+                                id="firstName"
+                                required
+                            >
                             
-                            <div class="invalid-feedback">The name must be without special characters or numbers</div>
-                            <div class="valid-feedback">Looks good!</div>
+                            <div id="firstNameValid" class="invalid-feedback">It's required</div>
                         </div>
             
                         <div>
                             <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" name="lastName" type="text" id="lastName" required>
+                            <input
+                                class="form-control"
+                                name="lastName"
+                                type="text"
+                                id="lastName"
+                                required
+                            >
                             
-                            <div class="invalid-feedback">The surname must be without special characters or numbers</div>
-                            <div class="valid-feedback">Looks good!</div>
+                            <div id="lastNameValid" class="invalid-feedback">It's required</div>
                         </div>
-                    </div>
 
-                    <div class="col-12">
                         <div>
                             <label for="email" class="form-label">Email</label>
-                            <input class="form-control" name="email" type="email" id="email" required>
+                            <input
+                                class="form-control"
+                                name="email"
+                                type="email"
+                                id="email"
+                                required
+                            >
 
-                            <div class="invalid-feedback">Invalid!</div>
-                            <div class="valid-feedback">Looks good!</div>
+                            <div id="emailValid" class="invalid-feedback">It's required</div>
                         </div>
             
                         <div>
                             <label for="phone" class="form-label">Number Phone</label>
-                            <div class="pd-telephone-input">
-                                <input class="form-control" name="phone" type="tel" id="phone">
-                            </div>
-
-                            <div class="invalid-feedback">Just numbers!</div>
-                            <div class="valid-feedback">Looks good!</div>
+                            <div id="flag2"></div>
+                            <input
+                                class="form-control"
+                                name="phone"
+                                type="tel"
+                                id="phone"
+                                onkeypress="validatePhone(event)"
+                                required
+                            >
+                            <div id="phoneValid" class="invalid-feedback">It's required</div>
                         </div>
                     </div>
 
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Send</button>
-                        <p class="form-msg-success">Form submited!</p>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <!-- Bootstrap -->
-    <script src="./bts/bootstrap.bundle.min.js"></script>
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
     <!-- JavaScript -->
     <script src="script.js"></script>
+    <!-- intlTelInput -->
+    <script src="./build/js/intlTelInput.js"></script>
+    <script>
+    var input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+        // allowDropdown: false,
+        // autoHideDialCode: false,
+        // autoPlaceholder: "off",
+        // dropdownContainer: document.body,
+        // excludeCountries: ["us"],
+        // formatOnDisplay: false,
+        // geoIpLookup: function(callback) {
+        //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+        //     var countryCode = (resp && resp.country) ? resp.country : "";
+        //     callback(countryCode);
+        //   });
+        // },
+        // hiddenInput: "full_number",
+        // initialCountry: "auto",
+        // localizedCountries: { 'de': 'Deutschland' },
+        // nationalMode: false,
+        // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+        // placeholderNumberType: "MOBILE",
+        // preferredCountries: ['cn', 'jp'],
+        // separateDialCode: true,
+        utilsScript: "build/js/utils.js",
+    });
+    </script>
 </body>
 </html>

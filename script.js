@@ -4,11 +4,12 @@ document.querySelector('#email').addEventListener('blur', validateEmail);
 document.querySelector('#phone').addEventListener('blur', validatePhone);
 
 const expresions = {
-	// usuario: /^[a-zA-Z0-9\_\-]{4,16}$/,
 	name: /^[a-zA-ZÀ-ÿ\s]{2,40}$/,
-	// password: /^.{4,12}$/,
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	phone: /^\d{7,14}$/
+    emailRule2: /^[a-zA-Z0-9_.+-]+[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // there is not @
+    emailRule3: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+[a-zA-Z0-9-.]+$/, // there is not .
+    phone: /[0-9]/,
+	phoneRule2: /^\d{7,14}$/ // to 7 until 14 digits
 }
 
 function validateFirstName() {
@@ -19,6 +20,7 @@ function validateFirstName() {
         return true;
     } else {
         fn.classList.add("is-invalid");
+        document.getElementById("firstNameValid").textContent = "Name must be without numbers or special characters and must insert 2 or more characters";
         return false;
     }
 }
@@ -30,7 +32,9 @@ function validateLastName() {
         ln.classList.remove("is-invalid");
         return true;
     } else {
+        ln.classList.remove("valid");
         ln.classList.add("is-invalid");
+        document.getElementById("lastNameValid").textContent = "Surname must be without numbers or special characters and must insert 2 or more characters";
         return false;
     }
 }
@@ -41,20 +45,32 @@ function validateEmail() {
     if(expresions.email.test(e.value)) {
         e.classList.remove("is-invalid");
         return true;
-    } else {
+    } else if(expresions.emailRule2.test(e.value)) {
         e.classList.add("is-invalid");
+        document.getElementById("emailValid").textContent = "Don't forget to insert @";
+        return false;
+    } else if(expresions.emailRule3.test(e.value)) {
+        e.classList.add("is-invalid");
+        document.getElementById("emailValid").textContent = "Don't forget to insert .";
+        return false;
+    }else {
+        e.classList.add("is-invalid");
+        document.getElementById("emailValid").textContent = "Please fill correctly";
         return false;
     }
 }
 
-function validatePhone() {
+function validatePhone(e) {
+    let dataNum = String.fromCharCode(e.which);
     let p = document.querySelector("#phone");
 
-    if(expresions.phone.test(p.value)) {
-        p.classList.remove("is-invalid");
+    if(!expresions.phone.test(dataNum) && !expresions.phoneRule2.test(p.value)) {
+        e.preventDefault();
+        p.classList.add("is-invalid");
+        document.getElementById("phoneValid").textContent = "Phone number must just to be to 7 from 14 digits";
         return true;
     } else {
-        p.classList.add("is-invalid");
+        p.classList.remove("is-invalid");
         return false;
     }
 }
@@ -81,12 +97,25 @@ function validatePhone() {
     })
 })()
 
-// const api = "https://ipinfo.io/json?token=1776fb5307cc3b";
-// const api = "https://ipinfo.io/1.1.1.1?token=1776fb5307cc3b"
-async function getData() {
-    fetch("https://ipinfo.io/?token=1776fb5307cc3b")
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-}
+// fetch("https://restcountries.com/v3.1/all")
+// .then((response) => {
+//     if(!response.ok) {
+//         throw error("error");
+//     }
+//     return response.json();
+// })
+// .then((data) => {
+//     console.log(data);
+//     console.log(data.map((v) => v.fifa ));
+//     console.log(data.map((v) => v.flags.png)); // url of flags
 
-getData();
+//     // grup country list
+//     const countryL = data.map((v) => {
+//         return`<option><img src="${v.flags.png}></img>${v.fifa}</option>`;
+//     })
+    
+//     const countryL2 = `<select>${countryL}</select>`;
+
+//     document.querySelector("#flag2").insertAdjacentHTML('afterbegin', countryL2);
+// })
+// .catch((error) => console.log(error))
