@@ -9,55 +9,68 @@
     <link rel="stylesheet" href="./bts/bootstrap.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-
 </head>
 <body>
-    <div class="container bg">
-        <h1>Registration</h1>
-
-        <form action="" class="row g-3 needs-validation" novalidate id="form">
+    <div class="container bg card p-3 content">
+        <div class="row">
             <div class="col-12 col-md-6">
-                <div>
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input class="form-control" name="firstName" type="text" id="firstName" value="" required>
-                    
-                    <div class="invalid-feedback">The name must be without special characters or numbers</div>
-                    <div class="valid-feedback">Looks good!</div>
-                </div>
-    
-                <div>
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input class="form-control" name="lastName" type="text" id="lastName" required>
-                    
-                    <div class="invalid-feedback">The surname must be without special characters or numbers</div>
-                    <div class="valid-feedback">Looks good!</div>
-                </div>
+                <img src="./tools/img.png" alt="image" class="img-fluid rounded">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat itaque eius repellat nostrum explicabo laudantium similique alias ducimus, quis voluptatum. Porro, delectus. Ullam neque laborum sequi adipisci unde quidem dolore?</p>
             </div>
 
             <div class="col-12 col-md-6">
-                <div>
-                    <label for="email" class="form-label">Email</label>
-                    <input class="form-control" name="email" type="email" id="email" required>
+                <h1 class="col-12 text-center">Registration</h1>
 
-                    <div class="invalid-feedback">Invalid!</div>
-                    <div class="valid-feedback">Looks good!</div>
-                </div>
-    
-                <div>
-                    <label for="number" class="form-label">Number Phone</label>
-                    <div class="pd-telephone-input">
-                        <input class="form-control" name="number" type="tel" id="number">
+                <form action="" class="row g-3 needs-validation" novalidate id="form">
+                    <div class="col-12">
+                        <div>
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input class="form-control" name="firstName" type="text" id="firstName" value="" required>
+                            
+                            <div class="invalid-feedback">The name must be without special characters or numbers</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+            
+                        <div>
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input class="form-control" name="lastName" type="text" id="lastName" required>
+                            
+                            <div class="invalid-feedback">The surname must be without special characters or numbers</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="col-12">
-                <button class="btn btn-primary" type="submit">Send</button>
-                <p class="form-msg-success">Form submited!</p>
+                    <div class="col-12">
+                        <div>
+                            <label for="email" class="form-label">Email</label>
+                            <input class="form-control" name="email" type="email" id="email" required>
+
+                            <div class="invalid-feedback">Invalid!</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+            
+                        <div>
+                            <label for="phone" class="form-label">Number Phone</label>
+                            <div class="pd-telephone-input">
+                                <input class="form-control" name="phone" type="tel" id="phone">
+                            </div>
+
+                            <div class="invalid-feedback">Just numbers!</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Send</button>
+                        <p class="form-msg-success">Form submited!</p>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
+    <!-- Bootstrap -->
     <script src="./bts/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>

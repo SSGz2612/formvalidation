@@ -1,11 +1,7 @@
 document.querySelector('#firstName').addEventListener('blur', validateFirstName);
-// document.querySelector('#firstName').addEventListener('keyup', validateFirstName);
-
 document.querySelector('#lastName').addEventListener('blur', validateLastName);
-// document.querySelector('#lastName').addEventListener('keyup', validateLastName);
-
 document.querySelector('#email').addEventListener('blur', validateEmail);
-// document.querySelector('#email').addEventListener('keyup', validateEmail);
+document.querySelector('#phone').addEventListener('blur', validatePhone);
 
 const expresions = {
 	// usuario: /^[a-zA-Z0-9\_\-]{4,16}$/,
@@ -51,6 +47,18 @@ function validateEmail() {
     }
 }
 
+function validatePhone() {
+    let p = document.querySelector("#phone");
+
+    if(expresions.phone.test(p.value)) {
+        p.classList.remove("is-invalid");
+        return true;
+    } else {
+        p.classList.add("is-invalid");
+        return false;
+    }
+}
+
 // bootstrap code
 (function() {
     var forms = document.querySelectorAll('.needs-validation');
@@ -62,6 +70,7 @@ function validateEmail() {
                 || !validateFirstName
                 || !validateLastName
                 || !validateEmail
+                || !validatePhone
             ) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -71,3 +80,13 @@ function validateEmail() {
         }, false);
     })
 })()
+
+// const api = "https://ipinfo.io/json?token=1776fb5307cc3b";
+// const api = "https://ipinfo.io/1.1.1.1?token=1776fb5307cc3b"
+async function getData() {
+    fetch("https://ipinfo.io/?token=1776fb5307cc3b")
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+}
+
+getData();
